@@ -150,7 +150,6 @@ objects:
         from:
           kind: ${JENKINS_SOURCE_KIND}
           name: ${JENKINS_SOURCE_TAG}
-          namespace: openshift
       type: Source
     triggers:
     - type: ConfigChange
