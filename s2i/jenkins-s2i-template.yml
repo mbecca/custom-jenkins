@@ -45,12 +45,8 @@ parameters:
   value: "true"
 - description: Name of the ImageStreamTag to be used for the Jenkins image.
   displayName: Jenkins ImageStreamTag
-  name: JENKINS_SOURCE_TAG
-  value: "openshift/jenkins-2-centos7"
-- description: Name of the Type to be used for the Jenkins image.
-  displayName: Jenkins Strategy type
-  name: JENKINS_SOURCE_KIND
-  value: "DockerImage"
+  name: JENKINS_IMAGE_STREAM_TAG
+  value: "jenkins:latest"
 objects:
 - apiVersion: v1
   kind: ServiceAccount
@@ -148,8 +144,9 @@ objects:
     strategy:
       sourceStrategy:
         from:
-          kind: ${JENKINS_SOURCE_KIND}
-          name: ${JENKINS_SOURCE_TAG}
+          kind: ImageStreamTag
+          name: ${JENKINS_IMAGE_STREAM_TAG}
+          namespace: openshift
       type: Source
     triggers:
     - type: ConfigChange
@@ -210,4 +207,12 @@ objects:
         - name: jenkins-data
           emptyDir: {}
     triggers:
-    - type: ConfigChange   
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - ${JENKINS_SERVICE_NAME}
+        from:
+          kind: ImageStreamTag
+          name: ${JENKINS_IMAGE_STREAM_TAG}
+      type: ImageChange
