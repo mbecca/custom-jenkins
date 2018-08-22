@@ -154,7 +154,7 @@ objects:
       type: ImageChange
   status:
     lastVersion: 0
-apiVersion: v1
+- apiVersion: v1
 kind: DeploymentConfig
 metadata:
   creationTimestamp: null
@@ -218,13 +218,13 @@ spec:
         name: jenkins-data
   test: false
   triggers:
-  - imageChangeParams:
-      automatic: true
-      containerNames:
-      - jenkins
-      from:
-        kind: ImageStreamTag
-        name: ${JENKINS_IMAGE_STREAM_TAG}
-        namespace: openshift
-    type: ImageChange
-  - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - ${JENKINS_SERVICE_NAME}
+        from:
+          kind: ImageStreamTag
+          name: ${JENKINS_IMAGE_STREAM_TAG}
+          namespace: openshift
+      type: ImageChange
+    - type: ConfigChange
