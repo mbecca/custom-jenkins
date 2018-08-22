@@ -2,5 +2,5 @@
 <proxy>
   <name>${PROXY_HOST}</name>
   <port>8080</port>
-  <secretPassword>{AQAAABAAAAAQl0PAEn7AW4KWp9ZnlZXNh2cMZ2ByW67HsBYnjMc/pos=}</secretPassword>
+  <secretPassword>{AQAAABAAAAAQvwrhd30A0YKaf2OH1rGWdZO/8kfjx7o6wniCwab+Rho=}</secretPassword>
 </proxy>
