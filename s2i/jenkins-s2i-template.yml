@@ -193,10 +193,10 @@ objects:
             value: "true"
           - name: JNLP_SERVICE_NAME
             value: jenkins-jnlp
-          - name: PROXY_PORT
-            value: "8080"
-          - name: PROXY_HOST
-            value: proxypool1.mecon.ar
+          - name: https_proxy
+            value: "http://proxypool1.mecon.ar:8080"
+          - name: http_proxy
+            value: "http://proxypool1.mecon.ar:8080"
           image: ${JENKINS_SERVICE_NAME}                                                                                                                                                            f33ce5601952a01b7cb88f9ea1772be0ddb50582d6e86b68d0426e431
           imagePullPolicy: Always
           name: ${JENKINS_SERVICE_NAME}
